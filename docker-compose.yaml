@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:15.0-alpine
+    hostname: postgresql.local
+    environment:
+      POSTGRES_DB: tenis-db
+      POSTGRES_USER: tenis-user
+      POSTGRES_PASSWORD: tenis-password
+    expose:
+      - 5432
+    volumes:
+      - postgres_torneios_data:/var/lib/postgresql/data
+    networks:
+      tenis-network:
+        ipv4_address: 10.211.19.1
+volumes:
+  postgres_torneios_data:
+networks:
+  tenis-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.211.19.0/16
