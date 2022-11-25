@@ -8,7 +8,7 @@ const findById = async (req: Request<IdParam>, res: Response) => {
   logger.debug('Pesquisando tenista de id %s', req.params.id);
   const { id } = req.params;
   const tenista = await prisma.tenista.findUnique({
-    where: { id },
+    where: { id }
   });
   if (tenista) {
     return res.json(tenista);
@@ -17,5 +17,5 @@ const findById = async (req: Request<IdParam>, res: Response) => {
 };
 
 export default {
-  findById,
+  findById
 };

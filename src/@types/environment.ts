@@ -1,4 +1,5 @@
-export {};
+// eslint-disable-next-line prettier/prettier
+export { };
 
 declare global {
   namespace NodeJS {

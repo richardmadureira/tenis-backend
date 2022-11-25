@@ -8,8 +8,8 @@ async function main() {
       email: 'edymarpatryk@gmail.com',
       sexo: Sexo.Masculino,
       dataNascimento: new Date(1980, 11, 12),
-      avatarUrl: 'https://robohash.org/edymar.png',
-    },
+      avatarUrl: 'https://robohash.org/edymar.png'
+    }
   });
 
   await prisma.tenista.create({
@@ -18,8 +18,8 @@ async function main() {
       email: 'richard.madureira@gmail.com',
       sexo: Sexo.Masculino,
       dataNascimento: new Date(1980, 6, 10),
-      avatarUrl: 'https://robohash.org/richard.png',
-    },
+      avatarUrl: 'https://robohash.org/richard.png'
+    }
   });
 }
 
