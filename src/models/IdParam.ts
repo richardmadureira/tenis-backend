@@ -1,3 +1,3 @@
 export interface IdParam {
-    id: string;
+  id: string;
 }

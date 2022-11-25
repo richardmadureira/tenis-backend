@@ -8,7 +8,7 @@ import logger from './utils/logger';
 dotenv.config();
 
 const PORT = process.env.PORT || 3333;
-const HOST = "0.0.0.0";
+const HOST = '0.0.0.0';
 
 const app = express();
 app.disable('x-powered-by');
@@ -19,5 +19,5 @@ app.use(helmet());
 app.use(routes);
 
 app.listen(PORT, HOST, () => {
-    logger.info(`Server started on port ${PORT}`);
+  logger.info(`Server started on port ${PORT}`);
 });
