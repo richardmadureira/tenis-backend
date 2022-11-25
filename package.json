@@ -1,0 +1,26 @@
+{
+  "name": "tenis-backend",
+  "version": "1.0.0",
+  "description": "Aplicação backend para aplicação de desafios de tênis",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardmadureira/tenis-backend.git"
+  },
+  "keywords": [
+    "tênis",
+    "desafio",
+    "torneio",
+    "ranking",
+    "tenistas"
+  ],
+  "author": "Richard Mendes Madureira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richardmadureira/tenis-backend/issues"
+  },
+  "homepage": "https://github.com/richardmadureira/tenis-backend#readme"
+}
