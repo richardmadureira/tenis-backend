@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  postgres:
-    container_name: postgres
+  postgresql:
+    container_name: postgresql
     image: postgres:15.0-alpine
     hostname: postgresql.local
     environment:
@@ -16,6 +16,19 @@ services:
     networks:
       tenis-network:
         ipv4_address: 10.211.19.1
+  backend:
+    container_name: backend
+    hostname: tenis-backend.local
+    image: tenis-backend:latest
+    environment:
+      DATABASE_URL: postgresql://tenis-user:tenis-password@postgresql.local:5432/tenis-db?schema=public
+    depends_on:
+      - postgresql
+    expose:
+      - 3333
+    networks:
+      tenis-network:
+        ipv4_address: 10.211.19.2
 volumes:
   postgres_torneios_data:
 networks:

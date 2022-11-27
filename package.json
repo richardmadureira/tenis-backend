@@ -2,10 +2,11 @@
   "name": "tenis-backend",
   "version": "1.0.0",
   "description": "Aplicação backend para aplicação de desafios de tênis",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "tsx --watch src/server.ts",
-    "build": "tsc --project ."
+    "build": "tsc --project .",
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,6 @@
   "homepage": "https://github.com/richardmadureira/tenis-backend#readme",
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^9.2.2",
-    "@prisma/client": "^4.6.1",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/multer": "^1.4.7",
@@ -36,7 +36,6 @@
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "helmet": "^6.0.0",
     "prettier": "^2.8.0",
     "prisma": "^4.6.1",
     "prisma-erd-generator": "^1.2.4",
@@ -44,7 +43,9 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@prisma/client": "^4.6.1",
     "cors": "^2.8.5",
+    "helmet": "^6.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",

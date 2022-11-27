@@ -14,19 +14,159 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Usuario {
+  id        String   @id @default(cuid())
+  nome      String
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("usuarios")
+}
+
+model Temporada {
+  id             String    @id @default(cuid())
+  descricao      String
+  horarioInicio  DateTime  @map("horario_inicio")
+  horarioTermino DateTime  @map("horario_termino")
+  listaRankings  Ranking[]
+
+  @@map("temporadas")
+}
+
+model Desafio {
+  id                   String      @id @default(cuid())
+  tipoPartida          TipoPartida @map("tipo_partida")
+  idTenistaDesafiante1 String      @map("id_tenista_desafiante1")
+  idTenistaDesafiante2 String?     @map("id_tenista_desafiante2")
+  idTenistaDesafiado1  String      @map("id_tenista_desafiado1")
+  idTenistaDesafiado2  String?     @map("id_tenista_desafiado2")
+  horarioPrevisto      DateTime    @map("horario_previsto")
+  horarioInicio        DateTime?   @map("horario_inicio")
+  horarioTermino       DateTime?   @map("horario_termino")
+
+  tenistaDesafiante1 Tenista  @relation(name: "tenistaDesafiante1", fields: [idTenistaDesafiante1], references: [id])
+  tenistaDesafiante2 Tenista? @relation(name: "tenistaDesafiante2", fields: [idTenistaDesafiante2], references: [id])
+  tenistaDesafiado1  Tenista  @relation(name: "tenistaDesafiado1", fields: [idTenistaDesafiado1], references: [id])
+  tenistaDesafiado2  Tenista? @relation(name: "tenistaDesafiado2", fields: [idTenistaDesafiado2], references: [id])
+
+  @@map("desafios")
+}
+
+model Ranking {
+  id                      String @id @default(cuid())
+  posicao                 Int
+  idTenista               String @map("id_tenista")
+  totalDesafiosRealizados Int    @map("total_desafios_realizados")
+  totalDesafiosRecebidos  Int    @map("total_desafios_recebidos")
+  totalDesafiosVencidos   Int    @map("total_desafios_vencidos")
+  totalDesafiosPerdidos   Int    @map("total_desafios_perdidos")
+  idTemporada             String @map("id_temporada")
+
+  tenista   Tenista   @relation(fields: [idTenista], references: [id])
+  temporada Temporada @relation(fields: [idTemporada], references: [id])
+
+  @@map("rankings")
+}
+
+model Torneio {
+  id              String    @id @default(cuid())
+  nome            String
+  horarioPrevisto DateTime  @map("horario_previsto")
+  horarioInicio   DateTime? @map("horario_inicio")
+  horarioTermino  DateTime? @map("horario_termino")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  listaPartidas   Partida[]
+
+  @@map("torneios")
+}
+
+model Tenista {
+  id             String   @id @default(cuid())
+  nome           String
+  email          String
+  dataNascimento DateTime @map("data_nascimento")
+  sexo           Sexo
+  avatarUrl      String   @map("avatar_url")
+
+  listaPartidas                   Partida[] @relation("tenista1")
+  lista2Partidas                  Partida[] @relation("tenista2")
+  listaPontos                     Ponto[]
+  listaRankings                   Ranking[]
+  listaDesafiosTenistaDesafiante1 Desafio[] @relation("tenistaDesafiante1")
+  listaDesafiosTenistaDesafiante2 Desafio[] @relation("tenistaDesafiante2")
+  listaDesafiosTenistaDesafiado1  Desafio[] @relation("tenistaDesafiado1")
+  listaDesafiosTenistaDesafiado2  Desafio[] @relation("tenistaDesafiado2")
+
+  @@map("tenistas")
+}
+
+model Partida {
+  id             String    @id @default(cuid())
+  idTorneio      String    @map("id_torneio")
+  tipoPartida    Int       @map("tipo_partida")
+  idTenista1     String    @map("id_tenista1")
+  idTenista2     String    @map("id_tenista2")
+  horarioInicio  DateTime? @map("horario_inicio")
+  horarioTermino DateTime? @map("horario_termino")
+
+  torneio   Torneio @relation(fields: [idTorneio], references: [id])
+  tenista1  Tenista @relation(name: "tenista1", fields: [idTenista1], references: [id])
+  tenista2  Tenista @relation(name: "tenista2", fields: [idTenista2], references: [id])
+  listaSets Set[]
+
+  @@map("partidas")
+}
+
+model Set {
+  id             String    @id @default(cuid())
+  idPartida      String    @map("id_partida")
+  horarioInicio  DateTime? @map("horario_inicio")
+  horarioTermino DateTime? @map("horario_termino")
+  listaGames     Game[]
+
+  partida Partida @relation(fields: [idPartida], references: [id])
+
+  @@map("sets")
+}
+
+model Game {
+  id          String  @id @default(cuid())
+  idSet       String  @map("id_set")
+  listaPontos Ponto[]
+
+  set Set @relation(fields: [idSet], references: [id])
+
+  @@map("games")
+}
+
+model Ponto {
+  id                String    @id @default(cuid())
+  tipoPonto         TipoPonto @map("tipo_ponto")
+  idTenistaVencedor String    @map("id_tenista_vencedor")
+  idGame            String    @map("id_game")
+
+  game     Game    @relation(fields: [idGame], references: [id])
+  vencedor Tenista @relation(fields: [idTenistaVencedor], references: [id])
+
+  @@map("pontos")
+}
+
 enum Sexo {
   Masculino
   Feminino
 }
 
-model Tenista {
-  id             String   @id() @default(cuid())
-  nome           String
-  email          String   @unique
-  dataNascimento DateTime @map("dt_nascimento")
-  sexo           Sexo
-  avatarUrl      String
-  createdAt      DateTime @default(now()) @map("created_at")
+enum TipoPonto {
+  QUINZE
+  TRINTA
+  QUARENTA
+  GAME
+}
 
-  @@map("tenistas")
+enum TipoPartida {
+  SIMPLES_MASCULINA
+  SIMPLES_FEMININA
+  DUPLAS_MASCULINA
+  DUPLAS_FEMININA
+  DUPLAS_MISTA
 }
