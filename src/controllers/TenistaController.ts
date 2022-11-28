@@ -2,7 +2,7 @@
 import { Tenista } from '@prisma/client';
 import { Request, Response } from 'express';
 import fs from 'fs';
-import { Page, PageQueryParams, IdParam } from '../models';
+import { IdParam, Page, PageQueryParams } from '../models';
 import logger from '../utils/logger';
 import prisma from '../utils/prisma-client';
 

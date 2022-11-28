@@ -46,7 +46,6 @@ const findAll = async (
     idTenistaDesafiante2: {
       equals: idTenistaDesafiante2 ?? undefined
     },
-
     idTenistaDesafiado1: {
       equals: idTenistaDesafiado1 ?? undefined
     },
