@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Tenista } from '@prisma/client';
 import { Request, Response } from 'express';
 import fs from 'fs';
@@ -51,7 +52,7 @@ const findAll = async (
   return res.json({ content, totalElements, pageCount });
 };
 
-const save = async (req: Request<void, Tenista, Tenista>, res: Response<Tenista>) => {
+const save = async (req: Request<any, Tenista, Tenista>, res: Response<Tenista>) => {
   const { nome, email, sexo, dataNascimento } = req.body;
   const file = req.file;
   console.log('file', file);
@@ -65,9 +66,9 @@ const save = async (req: Request<void, Tenista, Tenista>, res: Response<Tenista>
       avatarUrl: `https://robohash.org/${nome}.png`
     }
   });
-  const fileAvatar = '/tmp/avatars/'.concat(file?.filename as string);
+  const fileAvatar = process.env.DIR_AVATARS.concat('/').concat(file?.filename as string);
   if (fs.existsSync(fileAvatar)) {
-    const avatarUrl = `${process.env.URL_INICIAL}/avatars/${file?.filename}`;
+    const avatarUrl = process.env.URL_AVATARS.replace(':idAvatar', file?.filename as string);
     const tenistaComAvatar = await prisma.tenista.update({
       data: { avatarUrl },
       where: {
@@ -79,7 +80,7 @@ const save = async (req: Request<void, Tenista, Tenista>, res: Response<Tenista>
   return res.json(tenista).status(201);
 };
 
-const update = async (req: Request<IdParam, Tenista, Tenista>, res: Response<Tenista>) => {
+const update = async (req: Request<any, Tenista, Tenista>, res: Response<Tenista>) => {
   logger.debug('Atualizando tenista de id %s', req.params.id);
   const { id } = req.params;
   const { nome, email, sexo, dataNascimento, avatarUrl } = req.body;

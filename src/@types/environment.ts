@@ -9,6 +9,7 @@ declare global {
       DIR_ARQUIVOS: string;
       DIR_AVATARS: string;
       URL_INICIAL: string;
+      URL_AVATARS: string;
     }
   }
 }

@@ -2,8 +2,9 @@ import { Request, Response } from 'express';
 import fs from 'fs';
 
 const obterAvatar = async (req: Request, res: Response) => {
+  console.log('AvatarController.obterAvatar', process.env.DIR_AVATARS);
   const { filename } = req.params;
-  const filePath = '/tmp/avatars/'.concat(filename);
+  const filePath = process.env.DIR_AVATARS.concat('/').concat(filename);
   if (fs.existsSync(filePath)) {
     return res.sendFile(filePath);
   }
