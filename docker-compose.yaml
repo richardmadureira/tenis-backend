@@ -45,8 +45,8 @@ services:
         ipv4_address: 10.211.55.6
     volumes:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./docker/nginx-ssl:/ssl
-      - ./docker/nginx-www:/www/site
+      - ./docker/nginx/ssl:/ssl
+      - ./docker/nginx/www:/www/site
 
 volumes:
   postgres_torneios_data:

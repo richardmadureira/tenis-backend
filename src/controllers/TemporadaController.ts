@@ -24,7 +24,7 @@ const findAll = async (
   res: Response<Page<Temporada>>
 ) => {
   logger.debug('Pesquisando lista de temoradas');
-  const { descricao, horarioInicio, horarioTermino } = req.body;
+  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
   const { page, size } = req.query;
   const where = {
     descricao: {
@@ -35,6 +35,9 @@ const findAll = async (
     },
     horarioTermino: {
       equals: horarioTermino ?? undefined
+    },
+    ativa: {
+      equals: ativa ?? undefined
     }
   };
   const content = await prisma.temporada.findMany({
@@ -50,14 +53,31 @@ const findAll = async (
   return res.json({ content, totalElements, pageCount });
 };
 
+const findAllAtivas = async (req: Request<void, Temporada[]>, res: Response<Temporada[]>) => {
+  logger.debug('Pesquisando lista de temoradas');
+  const where = {
+    ativa: {
+      equals: true
+    }
+  };
+  const content = await prisma.temporada.findMany({
+    where,
+    orderBy: {
+      horarioInicio: 'desc'
+    }
+  });
+  return res.json(content);
+};
+
 const save = async (req: Request<void, Temporada, Temporada>, res: Response<Temporada>) => {
-  const { descricao, horarioInicio, horarioTermino } = req.body;
+  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
   logger.debug('Salvando novo temporada');
   const temporada = await prisma.temporada.create({
     data: {
       descricao,
       horarioInicio,
-      horarioTermino
+      horarioTermino,
+      ativa
     }
   });
   return res.json(temporada).status(201);
@@ -66,12 +86,13 @@ const save = async (req: Request<void, Temporada, Temporada>, res: Response<Temp
 const update = async (req: Request<IdParam, Temporada, Temporada>, res: Response<Temporada>) => {
   logger.debug('Atualizando temporada de id %s', req.params.id);
   const { id } = req.params;
-  const { descricao, horarioInicio, horarioTermino } = req.body;
+  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
   const temporadaAtualizada = await prisma.temporada.update({
     data: {
       descricao,
       horarioInicio,
-      horarioTermino
+      horarioTermino,
+      ativa
     },
     where: { id }
   });
@@ -90,6 +111,7 @@ const deleteById = async (req: Request<IdParam>, res: Response) => {
 export default {
   findById,
   findAll,
+  findAllAtivas,
   save,
   update,
   deleteById

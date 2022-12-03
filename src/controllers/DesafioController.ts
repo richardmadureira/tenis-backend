@@ -11,6 +11,12 @@ const findById = async (req: Request<IdParam>, res: Response) => {
   const desafio = await prisma.desafio.findUnique({
     where: {
       id
+    },
+    include: {
+      tenistaDesafiado1: { select: { id: true, nome: true } },
+      tenistaDesafiado2: { select: { id: true, nome: true } },
+      tenistaDesafiante1: { select: { id: true, nome: true } },
+      tenistaDesafiante2: { select: { id: true, nome: true } }
     }
   });
   if (desafio) {

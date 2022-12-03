@@ -52,6 +52,16 @@ const findAll = async (
   return res.json({ content, totalElements, pageCount });
 };
 
+const findAllEager = async (req: Request<void, Tenista[]>, res: Response<Tenista[]>) => {
+  logger.debug('Pesquisando lista de tenistas (eager)');
+  const content = await prisma.tenista.findMany({
+    orderBy: {
+      nome: 'asc'
+    }
+  });
+  return res.json(content);
+};
+
 const save = async (req: Request<any, Tenista, Tenista>, res: Response<Tenista>) => {
   const { nome, email, sexo, dataNascimento } = req.body;
   const file = req.file;
@@ -110,6 +120,7 @@ const deleteById = async (req: Request<IdParam>, res: Response) => {
 export default {
   findById,
   findAll,
+  findAllEager,
   save,
   update,
   deleteById

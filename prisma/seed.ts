@@ -7,117 +7,140 @@ async function main() {
       {
         descricao: 'Temporada de Desafios 2000',
         horarioInicio: '2000-01-01T00:00:00.000Z',
-        horarioTermino: '2000-12-31T23:59:59.999Z'
+        horarioTermino: '2000-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2001',
         horarioInicio: '2001-01-01T00:00:00.000Z',
-        horarioTermino: '2001-12-31T23:59:59.999Z'
+        horarioTermino: '2001-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2002',
         horarioInicio: '2002-01-01T00:00:00.000Z',
-        horarioTermino: '2002-12-31T23:59:59.999Z'
+        horarioTermino: '2002-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2003',
         horarioInicio: '2003-01-01T00:00:00.000Z',
-        horarioTermino: '2003-12-31T23:59:59.999Z'
+        horarioTermino: '2003-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2004',
         horarioInicio: '2004-01-01T00:00:00.000Z',
-        horarioTermino: '2004-12-31T23:59:59.999Z'
+        horarioTermino: '2004-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2005',
         horarioInicio: '2005-01-01T00:00:00.000Z',
-        horarioTermino: '2005-12-31T23:59:59.999Z'
+        horarioTermino: '2005-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2006',
         horarioInicio: '2006-01-01T00:00:00.000Z',
-        horarioTermino: '2006-12-31T23:59:59.999Z'
+        horarioTermino: '2006-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2007',
         horarioInicio: '2007-01-01T00:00:00.000Z',
-        horarioTermino: '2007-12-31T23:59:59.999Z'
+        horarioTermino: '2007-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2008',
         horarioInicio: '2008-01-01T00:00:00.000Z',
-        horarioTermino: '2008-12-31T23:59:59.999Z'
+        horarioTermino: '2008-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2009',
         horarioInicio: '2009-01-01T00:00:00.000Z',
-        horarioTermino: '2009-12-31T23:59:59.999Z'
+        horarioTermino: '2009-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2010',
         horarioInicio: '2010-01-01T00:00:00.000Z',
-        horarioTermino: '2010-12-31T23:59:59.999Z'
+        horarioTermino: '2010-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2011',
         horarioInicio: '2011-01-01T00:00:00.000Z',
-        horarioTermino: '2011-12-31T23:59:59.999Z'
+        horarioTermino: '2011-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2012',
         horarioInicio: '2012-01-01T00:00:00.000Z',
-        horarioTermino: '2012-12-31T23:59:59.999Z'
+        horarioTermino: '2012-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2013',
         horarioInicio: '2013-01-01T00:00:00.000Z',
-        horarioTermino: '2013-12-31T23:59:59.999Z'
+        horarioTermino: '2013-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2014',
         horarioInicio: '2014-01-01T00:00:00.000Z',
-        horarioTermino: '2014-12-31T23:59:59.999Z'
+        horarioTermino: '2014-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2015',
         horarioInicio: '2015-01-01T00:00:00.000Z',
-        horarioTermino: '2015-12-31T23:59:59.999Z'
+        horarioTermino: '2015-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2016',
         horarioInicio: '2016-01-01T00:00:00.000Z',
-        horarioTermino: '2016-12-31T23:59:59.999Z'
+        horarioTermino: '2016-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2017',
         horarioInicio: '2017-01-01T00:00:00.000Z',
-        horarioTermino: '2017-12-31T23:59:59.999Z'
+        horarioTermino: '2017-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2018',
         horarioInicio: '2018-01-01T00:00:00.000Z',
-        horarioTermino: '2018-12-31T23:59:59.999Z'
+        horarioTermino: '2018-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2019',
         horarioInicio: '2019-01-01T00:00:00.000Z',
-        horarioTermino: '2019-12-31T23:59:59.999Z'
+        horarioTermino: '2019-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2020',
         horarioInicio: '2020-01-01T00:00:00.000Z',
-        horarioTermino: '2020-12-31T23:59:59.999Z'
+        horarioTermino: '2020-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2021',
         horarioInicio: '2021-01-01T00:00:00.000Z',
-        horarioTermino: '2021-12-31T23:59:59.999Z'
+        horarioTermino: '2021-12-31T23:59:59.999Z',
+        ativa: false
       },
       {
         descricao: 'Temporada de Desafios 2022',
         horarioInicio: '2022-01-01T00:00:00.000Z',
-        horarioTermino: '2022-12-31T23:59:59.999Z'
+        horarioTermino: '2022-12-31T23:59:59.999Z',
+        ativa: true
       }
     ]
   });

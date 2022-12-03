@@ -14,12 +14,14 @@ routes.get('/', (req, res) => {
 
 routes.post('/temporadas', TemporadaController.save);
 routes.post('/temporadas/pesquisa', TemporadaController.findAll);
+routes.get('/temporadas/ativas', TemporadaController.findAllAtivas);
 routes.get('/temporadas/:id', TemporadaController.findById);
 routes.put('/temporadas/:id', TemporadaController.update);
 routes.delete('/temporadas/:id', TemporadaController.deleteById);
 
 routes.post('/tenistas', multerUpload.single('avatar'), TenistaController.save);
 routes.post('/tenistas/pesquisa', TenistaController.findAll);
+routes.get('/tenistas/pesquisa', TenistaController.findAllEager);
 routes.get('/tenistas/:id', TenistaController.findById);
 routes.put('/tenistas/:id', multerUpload.single('avatar'), TenistaController.update);
 routes.delete('/tenistas/:id', TenistaController.deleteById);

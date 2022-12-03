@@ -29,6 +29,7 @@ model Temporada {
   horarioInicio  DateTime  @map("horario_inicio")
   horarioTermino DateTime  @map("horario_termino")
   listaRankings  Ranking[]
+  ativa          Boolean
 
   @@map("temporadas")
 }
