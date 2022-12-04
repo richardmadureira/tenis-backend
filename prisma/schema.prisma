@@ -28,8 +28,10 @@ model Temporada {
   descricao      String
   horarioInicio  DateTime  @map("horario_inicio")
   horarioTermino DateTime  @map("horario_termino")
-  listaRankings  Ranking[]
   ativa          Boolean
+  ano            Int
+
+  listaRankings  Ranking[]
 
   @@map("temporadas")
 }
