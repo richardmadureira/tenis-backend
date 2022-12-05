@@ -24,11 +24,14 @@ const findAll = async (
   res: Response<Page<Temporada>>
 ) => {
   logger.debug('Pesquisando lista de temoradas');
-  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
+  const { descricao, ano, horarioInicio, horarioTermino, ativa } = req.body;
   const { page, size } = req.query;
   const where = {
     descricao: {
       contains: descricao ?? undefined
+    },
+    ano: {
+      equals: ano ?? undefined
     },
     horarioInicio: {
       equals: horarioInicio ?? undefined
@@ -70,11 +73,12 @@ const findAllAtivas = async (req: Request<void, Temporada[]>, res: Response<Temp
 };
 
 const save = async (req: Request<void, Temporada, Temporada>, res: Response<Temporada>) => {
-  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
+  const { descricao, ano, horarioInicio, horarioTermino, ativa } = req.body;
   logger.debug('Salvando novo temporada');
   const temporada = await prisma.temporada.create({
     data: {
       descricao,
+      ano,
       horarioInicio,
       horarioTermino,
       ativa
@@ -86,10 +90,11 @@ const save = async (req: Request<void, Temporada, Temporada>, res: Response<Temp
 const update = async (req: Request<IdParam, Temporada, Temporada>, res: Response<Temporada>) => {
   logger.debug('Atualizando temporada de id %s', req.params.id);
   const { id } = req.params;
-  const { descricao, horarioInicio, horarioTermino, ativa } = req.body;
+  const { descricao, ano, horarioInicio, horarioTermino, ativa } = req.body;
   const temporadaAtualizada = await prisma.temporada.update({
     data: {
       descricao,
+      ano,
       horarioInicio,
       horarioTermino,
       ativa
@@ -98,6 +103,7 @@ const update = async (req: Request<IdParam, Temporada, Temporada>, res: Response
   });
   return res.json(temporadaAtualizada);
 };
+
 const deleteById = async (req: Request<IdParam>, res: Response) => {
   logger.debug('Excluindo temporada de id %s', req.params.id);
   const { id } = req.params;
