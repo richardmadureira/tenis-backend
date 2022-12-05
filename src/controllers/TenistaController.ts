@@ -113,6 +113,7 @@ const deleteById = async (req: Request<IdParam>, res: Response) => {
   const tenista = await prisma.tenista.findUnique({ where: { id } });
   if (tenista) {
     await prisma.tenista.delete({ where: { id } });
+    // TODO incluir exclusão de foto do usuário excluído, quando existir
   }
   return res.status(204).end();
 };
